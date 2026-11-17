@@ -10,6 +10,9 @@
 
 <body>
     <h1>Прокат настольных игр</h1>
+    <label>
+        <input type="checkbox" id="onlyFreeFilter"> Только свободные
+    </label>
     <u1 id="gameList"></u1>
     <label for="gameSelect">Игра</label>
     <select id="gameSelect">
@@ -30,23 +33,39 @@
             { title: 'Доббль', players: 6, borrower: 'Аня' },
             { title: 'Шахматы', players: 2, borrower: null }
         ];
+        const onlyFreeFilter = document.getElementById('onlyFreeFilter');
         const gameList = document.getElementById('gameList');
         const gameSelect = document.getElementById('gameSelect');
         const borrowerName = document.getElementById('borrowerName');
         const message = document.getElementById('message');
+        
 
         function renderGames() {
             gameList.textContent = '';
+            const showOnlyFree = onlyFreeFilter.checked;
+            console.log(showOnlyFree)
             games.forEach(function (game) {
                 const li = document.createElement('li');
                 if (game.borrower === null) {
-                    li.textContent = game.title + ' . ' + game.players + ' игрока . Свободна';
+                    li.textContent = game.title + ' , ' + game.players + ' игрока . Свободна';
+                    // console.log(li.textContent)
                 } else {
-                    li.textContent = game.title + ' . ' + game.players + ' игрока . Взял(а): ' + game.borrower;
+                    li.textContent = game.title + ' , ' + game.players + ' игрока . Взял(а): ' + game.borrower;
+                    // console.log(li.textContent)
                 }
-                gameList.append(li);
+
+                if (showOnlyFree) {
+                    if (game.borrower === null) {
+                        gameList.append(li);
+                    }
+                } else {
+                    gameList.append(li);
+                    console.log(console.log(li.textContent))
+                }
             });
         }
+        onlyFreeFilter.addEventListener('change', renderGames)
+
         document.getElementById('borrowButton').addEventListener('click', function () {
             const index = Number(gameSelect.value);
             const game = games[index];
