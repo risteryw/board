@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прокат настольных игр</title>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <h1>Прокат настольных игр</h1>
+    <u1 id="gameList"></u1>
+    <label for="gameSelect">Игра</label>
+    <select id="gameSelect">
+        <option value="0">Каркассон</option>
+        <option value="1">Доббль</option>
+        <option value="2">Шахматы</option>
+    </select>
+
+    <label for="borrowerName">Имя посетителя</label>
+    <input id="borrowerName" type="text">
+    <button id="borrowButton" type="button">Выдать</button>
+    <button id="returnButton" type="button">Вернуть</button>
+    <p id="message"></p>
+
+    <script>
+        const games = [
+            { title: 'Каркассон', players: 4, borrower: null },
+            { title: 'Доббль', players: 6, borrower: 'Аня' },
+            { title: 'Шахматы', players: 2, borrower: null }
+        ];
+        const gameList = document.getElementById('gameList');
+        const gameSelect = document.getElementById('gameSelect');
+        const borrowerName = document.getElementById('borrowerName');
+        const message = document.getElementById('message');
+
+        function renderGames() {
+            gameList.textContent = '';
+            games.forEach(function (game) {
+                const li = document.createElement('li');
+                if (game.borrower === null) {
+                    li.textContent = game.title + ' . ' + game.players + ' игрока . Свободна';
+                } else {
+                    li.textContent = game.title + ' . ' + game.players + ' игрока . Взял(а): ' + game.borrower;
+                }
+                gameList.append(li);
+            });
+        }
+        document.getElementById('borrowButton').addEventListener('click', function () {
+            const index = Number(gameSelect.value);
+            const game = games[index];
+            const name = borrowerName.value.trim();
+            if (name === '') {
+                message.textContent = 'Введите имя';
+            } else if (game.borrower !== null) {
+                message.textContent = 'Игра уже выдана';
+            } else {
+                game.borrower = name;
+                message.textContent = 'Игра выдана';
+                renderGames();
+            }
+        });
+        document.getElementById('returnButton').addEventListener('click', function () {
+            const index = Number(gameSelect.value);
+            const game = games[index];
+
+            if (game.borrower !== null) {
+                game.borrower = null;
+                message.textContent = 'Игра возвращена';
+                renderGames();
+            } else {
+                message.textContent = 'Игра уже свободна';
+            }
+        });
+        renderGames();
+    </script>
+
+</body>
+
+</html>
