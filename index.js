@@ -1,4 +1,4 @@
-const gamesel = document.getElementById('gameSelect')
+const games = document.getElementById('gameSelect')
 const message = document.getElementById('message')
 const borbutton = document.getElementById('borrowButton')
 const retbutton = document.getElementById('returnButton')
@@ -24,7 +24,7 @@ addbutton.addEventListener('click', () => {
     renderoption()
 })
 borbutton.addEventListener('click', () => {
-    const ind = Number(gamesel.value)
+    const ind = Number(games.value)
     if (list[ind].name != null) {
         message.textContent = 'Игра уже выдана'
         return
@@ -35,7 +35,7 @@ borbutton.addEventListener('click', () => {
     render()
 })
 retbutton.addEventListener('click', () => {
-    const ind = Number(gamesel.value)
+    const ind = Number(games.value)
     if (list[ind].name == null) {
         message.textContent = 'Игра свободна'
         return
@@ -48,12 +48,12 @@ filter.addEventListener('change', () => {
     render()
 });
 function renderoption() {
-    gamesel.textContent = ""
+    games.textContent = ""
     list.forEach((el, i) => {
         const pull = document.createElement('option')
         pull.append(el.game)
         pull.value = i
-        gamesel.append(pull)
+        games.append(pull)
     });
 }
 function render() {
