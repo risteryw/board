@@ -1,0 +1,121 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff0f5;
+    color: #4a2535;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(219, 112, 147, 0.15);
+    border: 2px solid #ffc0cb;
+}
+
+input[type="text"],
+input[type="number"],
+#game,
+#player,
+#borrowerName,
+#gameSelect {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    margin: 8px 0 16px 0;
+    border: 2px solid #ffb6c1;
+    border-radius: 8px;
+    background-color: #fffafa;
+    color: #4a2535;
+    font-size: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+#gameSelect:focus {
+    outline: none;
+    border-color: #ff1493;
+    box-shadow: 0 0 0 3px rgba(255, 20, 147, 0.15);
+}
+button {
+    padding: 10px 18px;
+    margin: 5px 5px 15px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#add,
+#borrowButton {
+    background-color: #ff69b4;
+    color: #ffffff;
+}
+
+#add:hover,
+#borrowButton:hover {
+    background-color: #ff1493;
+}
+#returnButton {
+    background-color: #ffe4e1;
+    color: #c71585;
+    border: 1px solid #ffb6c1;
+}
+
+#returnButton:hover {
+    background-color: #ffc0cb;
+}
+#filter {
+    accent-color: #ff1493;
+    transform: scale(1.2);
+    margin-right: 8px;
+    cursor: pointer;
+}
+#message {
+    min-height: 24px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: #fff0f5;
+    color: #c71585;
+    font-weight: 600;
+    border-left: 4px solid #ff1493;
+}
+
+#message:empty {
+    display: none;
+}
+
+#hint {
+    font-size: 13px;
+    color: #b05c7e;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+#gameList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#gameList li {
+    background-color: #fff5f8;
+    border: 1px solid #ffd1dc;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#gameList li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.15);
+    border-color: #ff69b4;
+}
