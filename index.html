@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прокат настольных игр</title>
+    <script scr="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Прокат настольных игр</h1>
+    <input type="checkbox" id="filter">
+    <label for="filter">Только свободные</label>
+    <p id="hint"></p>
+
+    <label for="gameSelect">Игра</label>
+    <select id="gameSelect">
+    </select>
+
+    <label for="borrowerName">Имя посетителя</label>
+    <input id="borrowerName" type="text">
+    <button id="borrowButton" type="button">Выдать</button>
+    <button id="returnButton" type="button">Вернуть</button>
+    <input type="number" min="0" step="1" id="copies2">
+    <label for="copies2">Введите количество новых копий</label>
+    <button id="add1">Добавить</button>
+    <ul id="gameList"></ul>
+    <div>
+        <input type="text" id="game">
+        <label for="game">Введите название игры</label>
+    </div>
+    <div>
+        <input type="number" min="0" step="1" id="player">
+        <label for="player">Введите количество игроков</label>
+    </div>
+    <div>
+        <input type="number" min="0" step="1" id="copies">
+        <label for="copies">Введите количество копий</label>
+    </div>
+    <button id="add">Добавить</button>
+    <p id="message"></p>      
+    
+</body>
+</html>
